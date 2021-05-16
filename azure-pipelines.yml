@@ -76,7 +76,6 @@ stages:
 
           - task: UsePythonVersion@0
             inputs:
-            condition: 
               versionSpec: '$(pythonVersion)'
             displayName: 'Use Python version'
 
@@ -84,6 +83,7 @@ stages:
             displayName: 'Deploy Azure Web App : syzaak-flaskapp'
             inputs:
               azureSubscription: $(azureServiceConnectionId)
+              appType: webAppLinux
               appName: $(webAppName)
               package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
               StartupCommand: 'startup.txt'
